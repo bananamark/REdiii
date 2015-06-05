@@ -16,12 +16,11 @@ class Ligand_Dock
 import pymol
 cmd.load(\"ligandfit/LigandFit_run_#{dir_count}_/ligand_fit_1_1.pdb\")
 cmd.load(\"ligandfit/LigandFit_run_#{dir_count}_/EDITED_overall_best_final_refine_001.pdb\")
-cmd.save(\'\'\'liganded_pdb.pdb\'\'\',\'\'\'((ligand_fit_1_1) or (EDITED_overall_best_final_refine_001))\'\'\',quiet=0)
+cmd.save(\'\'\'ligandfit/liganded_pdb.pdb\'\'\',\'\'\'((ligand_fit_1_1) or (EDITED_overall_best_final_refine_001))\'\'\',quiet=0)
 ") }
         
         system "#{pymol_path} -q -c ligandfit/script2.py"
-    	#system "#{phenix_path}.ready_set liganded_pdb.pdb" # hydrogens=False
-    	system "#{phenix_path}.refine ../output_files/#{project}_#{crystal}_free.mtz ligandfit/liganded_pdb.pdb nproc=2 refinement.input.xray_data.labels=IMEAN,SIGIMEAN ordered_solvent=true stop_for_unknowns=False"
+    	system "#{phenix_path}.refine ../output_files/#{project}_#{crystal}_free.mtz liganded_pdb.pdb nproc=2 refinement.input.xray_data.labels=IMEAN,SIGIMEAN ordered_solvent=true"
         system "cp liganded_pdb.updated_refine_001.pdb ../output_files"
         system "cp liganded_pdb.updated_refine_001.mtz ../output_files"
         system "cp liganded_pdb.updated_refine_001.log ../output_files"
