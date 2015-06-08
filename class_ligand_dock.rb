@@ -21,9 +21,9 @@ cmd.save(\'\'\'ligandfit/liganded_pdb.pdb\'\'\',\'\'\'((ligand_fit_1_1) or (EDIT
         
         system "#{pymol_path} -q -c ligandfit/script2.py"
     	system "#{phenix_path}.refine ../output_files/#{project}_#{crystal}_free.mtz liganded_pdb.pdb nproc=2 refinement.input.xray_data.labels=IMEAN,SIGIMEAN ordered_solvent=true"
-        system "cp ligandfit/liganded_pdb_refine_001.pdb ../output_files"
-        system "cp ligandfit/liganded_pdb_refine_001.mtz ../output_files"
-        system "cp ligandfit/liganded_pdb_refine_001.log ../output_files"
+        system "cp liganded_pdb_refine_001.pdb ../output_files"
+        system "cp liganded_pdb_refine_001.mtz ../output_files"
+        system "cp liganded_pdb_refine_001.log ../output_files"
 
         Dir.chdir '../'
     end
