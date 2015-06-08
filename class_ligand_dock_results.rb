@@ -1,6 +1,6 @@
 class Ligand_Dock_Results
   def contents
-    File.open("output_files/liganded_pdb.updated_refine_001.log") { |f| f.read }
+    File.open("output_files/liganded_pdb_refine_001.log") { |f| f.read }
   end
 
   def statistics
