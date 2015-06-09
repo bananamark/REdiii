@@ -70,6 +70,7 @@ cmd.save(\'\'\'arp_solv_input.pdb\'\'\',\'\'\'#{project}_#{crystal}_free_warpNtr
       Dir.chdir '../'
       system  "$warpbin/auto_solvent.sh datafile {#{pathName1}/processing/#{project}_#{crystal}_free.mtz} workdir {#{pathName1}/arpwarp/} fp {F} sigfp {SIGF} protein {#{pathName1}/arpwarp/arp_solv_input.pdb} freer {FreeR_flag}"
       system 'mv arpwarp/201* arp_solv'
+      FileUtils.cp("arp_solv/#{project}_#{crystal}_free_warp_solvent.pdb", "output_files")
   end
 end 
 
