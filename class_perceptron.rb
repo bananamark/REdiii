@@ -7,10 +7,10 @@
 
 class Perceptron
 
-  def spacegroup_learned (protein, number)
+  def spacegroup_learned (protein, number, mypath)
 
     data_set = []
-    CSV.foreach(File.open("/home/bohnm/Public/database.db", 'r')) do |row|
+    CSV.foreach(File.open("#{my_path}/database.db", 'r')) do |row|
      data_set << row[0..2]
     end
 
