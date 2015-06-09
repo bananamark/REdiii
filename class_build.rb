@@ -2,12 +2,12 @@ class Build
 
   attr_accessor :choice, :project, :crystal
 
-  def decision (choice, project, crystal, phenix_path)
+  def decision (choice, project, crystal, phenix_path, pymol_path)
     case choice
     when "autobuild"
       return autobuild(project, crystal, phenix_path)
     when "arpwarp"
-      return arpwarp(project,crystal)
+      return arpwarp(project,crystal, pymol_path)
     when "buccaneer"
       return buccaneer(project, crystal, phenix_path)
     when "false"
@@ -23,7 +23,7 @@ class Build
     Dir.chdir("../")
   end
 
-  def arpwarp (project, crystal)
+  def arpwarp (project, crystal, pymol_path)
     system  "mkdir arpwarp"
     pathName1 = File.expand_path(File.dirname('arpwarp'))
     Dir.chdir("arpwarp")
@@ -70,7 +70,6 @@ cmd.save(\'\'\'arp_solv_input.pdb\'\'\',\'\'\'#{project}_#{crystal}_free_warpNtr
       Dir.chdir '../'
       system  "$warpbin/auto_solvent.sh datafile {#{pathName1}/processing/#{project}_#{crystal}_free.mtz} workdir {#{pathName1}/arpwarp/} fp {F} sigfp {SIGF} protein {#{pathName1}/arpwarp/arp_solv_input.pdb} freer {FreeR_flag}"
       system 'mv arpwarp/201* arp_solv'
-      #FileUtils.cp("arp_solv/#{project}_#{crystal}_free_warp_solvent.pdb", "../../output_files")
   end
 end 
 
