@@ -294,7 +294,7 @@ system "cp processing/#{options[:projectP]}_#{options[:crystalP]}_free.mtz outpu
     new_spacegroup = perceptron.spacegroup_learned(options[:projectP], options[:number], my_path)
     puts new_spacegroup
     new_spacegroup = "-spacegroup #{new_spacegroup}"
-    xia2.run(options[:projectP], options[:crystalP], new_spacegroup)
+    xia2.run(options[:projectP], options[:crystalP], new_spacegroup, xia2_path)
     puts "Tried to determine spacegroup from our previous results."
     if File.exist?("xia2/LogFiles/#{options[:projectP]}_#{options[:crystalP]}_XSCALE.log")
       xia2_results = Xia2_results.new
