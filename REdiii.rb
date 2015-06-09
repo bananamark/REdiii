@@ -410,7 +410,7 @@ system "cp molecular_replacement/MR.1.pdb output_files/"
 #Conducting trace
 
 build = Build.new
-build.decision(options[:build], options[:projectP], options[:crystalP], phenix_path)
+build.decision(options[:build], options[:projectP], options[:crystalP], phenix_path, pymol_path)
 
 #Finalizing trace
 
