@@ -291,7 +291,7 @@ system "cp processing/#{options[:projectP]}_#{options[:crystalP]}_free.mtz outpu
   if File.exist?("output_files/#{options[:projectP]}_#{options[:crystalP]}_free.mtz") == false
     perceptron = Perceptron.new
 
-    new_spacegroup = perceptron.spacegroup_learned(options[:projectP], options[:number])
+    new_spacegroup = perceptron.spacegroup_learned(options[:projectP], options[:number], my_path)
     puts new_spacegroup
     new_spacegroup = "-spacegroup #{new_spacegroup}"
     xia2.run(options[:projectP], options[:crystalP], new_spacegroup)
